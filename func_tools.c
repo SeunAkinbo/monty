@@ -1,70 +1,127 @@
-#include "main.h"
+#include "monty.h"
 
 
 /**
  * push - push item to a stack
- * @x: The item to be pushed
+ * @stack: A doubly linked list
+ * @line_number: The item to be pushed
  * Return: void
  *
  * Desciption: add item to the top of a stack and return void
  **/
 
 
-void push(int x)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode = NULL;
+	int value;
 
-	if (argc < 2)
+	if (argc != 2)
 	{
-		perror("L<line_number>: usage: push integer\n");
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	if (!(atoi(argv[1])))
+	if (argv == NULL || !isdigit(*argv) && *argv != '-')
 	{
-		fprintf(stderr, "L<line_number>: usage: push integer\n");
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+
+	value = atoi(argv[1]);
 
 	newnode = malloc(sizeof(stack_t));
 	if (!newnode)
 	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free(newnode);
 		exit(EXIT_FAILURE);
 	}
 
 	newnode->next = NULL;
 	newnode->prev = NULL;
-	newnode->n = x;
-	
-	if (!top)
-		top = newnode;
-	else
+	newnode->n = value;
+
+	if (*stack)
 	{
-		newnode->prev = top;
-		top->next = newnode;
-		top = newnode;
+		(*stack)->prev = newnode;
+		newnode->next = *stack;
 	}
+	*stack = newnode;
 }
 
 
 /**
  * pall - prints the items in a stack
+ * @stack: Doubly linked list stack
+ * @line_number: The file line number
  * Return: void
  *
  * Description: prints items in a stack and returns void
  **/
 
-void pall()
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
+	(void)line_number;
 
-	if (!top)
+	if (!*stack)
 		exit(EXIT_SUCCESS);
-	else
+
+	temp = *stack;
+	while (temp)
 	{
-		temp = top;
 		printf("%d\n", temp->n);
-		temp = temp->prev;
+		temp = temp->next;
 	}
 }
+
+
+/**
+ * pint - Print item at the top of the stack
+ * @stack: The singly linked list
+ * @line_number: The file line number
+ * Return: void
+ *
+ * Description: Function prints the item at the to
+ *		 of a stack and returns void
+ **/
+
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else
+		printf("%d\n", (*stack)->n);
+}
+
+
+/**
+ * pop - Pops item at the top of the stack
+ * @stack: Doubly linked list
+ * @line_number: The file line number
+ * Return: void
+ *
+ * Description: Pops item at the top of a
+ *		stack and returns void
+ **/
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	else if ((*stack)->next == NULL)
+		*stack = NULL;
+	else
+		*stack = (*stack)->next;
+}
+
+
+

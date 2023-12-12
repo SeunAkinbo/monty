@@ -1,8 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
-
-/*MACRO FOR MAXSIZE*/
-#define MAXSIZE 100
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +7,10 @@
 
 
 /*GLOBAL VARIABLE DECLARATION AND DEFINITION*/
-extern stack_t *top = NULL;
+#define STACKOPS 0;
+#define QUEUEOPS 1;
+
+extern stack_t *stack = NULL;
 
 /*DEFINING STRUCT*/
 
@@ -48,7 +48,9 @@ typedef struct instruction_s
 
 /*FUNCTION PROTOTYPES*/
 
-void push(int x);
-void pall();
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif /*MAIN_H*/
