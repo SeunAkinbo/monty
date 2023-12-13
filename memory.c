@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/** 
+/**
  * closefile - closes the opened file
  * Return: void
  *
@@ -8,7 +8,7 @@
  **/
 
 
-void closefile()
+void closefile(void)
 {
 	fclose(file_items->file);
 }
@@ -16,14 +16,13 @@ void closefile()
 
 /**
  * freeline - Frees the memory allocated during the getline function instance
- *
  * Return: void
  *
  * Description: Frees the memory allocated
  *		during the getline instance
  **/
 
-void freeline()
+void freeline(void)
 {
 	free(file_items->line);
 }

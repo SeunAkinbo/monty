@@ -5,8 +5,6 @@
  * @stack: A doubly linked list
  * @line_number: The item to be pushed
  * Return: void
- *
- * Desciption: add item to the top of a stack and return void
  **/
 
 void push(stack_t **stack, unsigned int line_number)
@@ -33,7 +31,6 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	value = atoi(args);
-
 	newnode = malloc(sizeof(stack_t));
 	if (!newnode)
 	{
@@ -63,7 +60,6 @@ void push(stack_t **stack, unsigned int line_number)
  * Description: Pops item at the top of a
  *		stack and returns void
  **/
-
 void pop(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack)

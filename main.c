@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
 	int getline(char **line, size_t *len, FILE *file);
 
 	instruction_t instructions[] = {
-                                        {"push", &push},
-                                        {"pall", &pall},
-                                        {"pint", &pint},
-                                        {"pop", &pop},
-                                        {NULL, NULL}
-        };
+					{"push", &push},
+					{"pall", &pall},
+					{"pint", &pint},
+					{"pop", &pop},
+					{NULL, NULL}
+	};
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
