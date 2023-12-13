@@ -4,15 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-
-/*GLOBAL VARIABLE DECLARATION AND DEFINITION*/
-#define STACKOPS 0;
-#define QUEUEOPS 1;
-
-extern stack_t *stack = NULL;
-
-/*DEFINING STRUCT*/
+/*DEFINING STRUCTS*/
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -46,11 +40,44 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/**
+ * struct File_content - a struct containing item of a line
+ * @file: pointer to the file
+ * @line: a pointer to the line read by getline
+ * @num_tokens: number of tokens passed
+ * @stack: pointer to the head
+ */
+
+typedef struct file_handler
+{
+	FILE *file;
+	char *line;
+	int num_tokens;
+	stack_t *stack;
+} file_handler;
+
+
+/*GLOBAL VARIABLE DECLARATION AND DEFINITION*/
+extern file_handler file_items;
+
+
 /*FUNCTION PROTOTYPES*/
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+int main(int argc, char *argv[]);
+void closefile();
+void freeline();
+
+
+/*STRUCT DEFINITION*/
+instruction_t instructions[] = {
+    {"push", &push},
+    {"pall", &pall},
+    {"pint", &pint},
+    {"pop", &pop},
+    {NULL, NULL}};
 
 #endif /*MAIN_H*/
