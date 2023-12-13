@@ -10,7 +10,7 @@
 
 void closefile()
 {
-	fclose(file_items.file);
+	fclose(file_items->file);
 }
 
 
@@ -25,5 +25,5 @@ void closefile()
 
 void freeline()
 {
-	free(file_items.line);
+	free(file_items->line);
 }

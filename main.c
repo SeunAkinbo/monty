@@ -1,5 +1,11 @@
 #include "monty.h"
-
+file_handler *file_items = NULL;
+/**
+ *
+ *
+ *
+ *
+ **/
 
 int main(int argc, char *argv[])
 {
@@ -10,12 +16,19 @@ int main(int argc, char *argv[])
 	int found;
 	int getline(char **line, size_t *len, FILE *file);
 
+	instruction_t instructions[] = {
+                                        {"push", &push},
+                                        {"pall", &pall},
+                                        {"pint", &pint},
+                                        {"pop", &pop},
+                                        {NULL, NULL}
+        };
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file_items.num_tokens = argc ;
 
 	file = fopen(argv[1], "r");
 	if (file == NULL)
@@ -23,12 +36,15 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	file_items.file = file;
+
+	file_items->file = file;
+	file_items->num_tokens = argc;
+	file_items->line = NULL;
 
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
-		file_items.line = line;
+		file_items->line = line;
 		opcode = strtok(line, " \n\t\r");
 		if (opcode == NULL)
 			continue;
@@ -39,7 +55,7 @@ int main(int argc, char *argv[])
 			if (strcmp(opcode, instructions[i].opcode) == 0)
 			{
 				found = 1;
-				instructions[i].f(&file_items.stack, line_number);
+				instructions[i].f(&file_items->stack, line_number);
 				break;
 			}
 		}
@@ -48,12 +64,14 @@ int main(int argc, char *argv[])
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 			free(line);
+			free(file_items);
 			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 	}
 
 	free(line);
+	free(file_items);
 	fclose(file);
 	exit(EXIT_SUCCESS);
 }

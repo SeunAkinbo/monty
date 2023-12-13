@@ -58,7 +58,7 @@ typedef struct file_handler
 
 
 /*GLOBAL VARIABLE DECLARATION AND DEFINITION*/
-extern file_handler file_items;
+extern file_handler *file_items;
 
 
 /*FUNCTION PROTOTYPES*/
@@ -71,13 +71,5 @@ int main(int argc, char *argv[]);
 void closefile();
 void freeline();
 
-
-/*STRUCT DEFINITION*/
-instruction_t instructions[] = {
-    {"push", &push},
-    {"pall", &pall},
-    {"pint", &pint},
-    {"pop", &pop},
-    {NULL, NULL}};
 
 #endif /*MAIN_H*/

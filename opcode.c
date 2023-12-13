@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 	int value;
 
 	args = strtok(NULL, " \n\t\r");
-	if (file_items.num_tokens < 2)
+	if (file_items->num_tokens < 2)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		closefile();
