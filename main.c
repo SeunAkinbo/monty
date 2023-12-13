@@ -1,12 +1,18 @@
 #include "monty.h"
 
-char *get_token(char *args)
+int main(int argc, char *argv[])
 {
 	FILE *file;
 	char *opcode, *line = NULL;
 	size_t i, len = 0;
 	unsigned int line_number = 0;
 	int found;
+
+	if (argc != 2)
+	{
+		fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
 
 	file = fopen(args[1], "r");
 	if (file == NULL)

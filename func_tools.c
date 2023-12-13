@@ -14,27 +14,33 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode = NULL;
+	char *args;
 	int value;
 
-	if (argc != 2)
+	args = strtok(NULL, " \n\t\r");
+	if (argc < 2)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	if (argv[1] == NULL || !isdigit(*argv[1]) && *argv[0] != '-')
+	if (args[1] == NULL || !isdigit(*args) && *args != '-')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free(line);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 
-	value = atoi(argv[1]);
+	value = atoi(args);
 
 	newnode = malloc(sizeof(stack_t));
 	if (!newnode)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free(line);
 		free(newnode);
+		fclose(file);
 		exit(EXIT_FAILURE);
 	}
 
