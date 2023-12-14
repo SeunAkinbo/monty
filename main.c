@@ -37,6 +37,14 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
+	file_items = malloc(sizeof(file_handler));
+        if (!file_items)
+        {
+                fprintf(stderr, "Error: malloc failed\n");
+                exit(EXIT_FAILURE);
+        }
+
+	file_items->stack = NULL;
 	file_items->file = file;
 	file_items->num_tokens = argc;
 	file_items->line = NULL;
@@ -48,7 +56,7 @@ int main(int argc, char *argv[])
 		opcode = strtok(line, " \n\t\r");
 		if (opcode == NULL)
 			continue;
-
+		/*file_items->arg = strtok(NULL, " \n\t\r");*/
 		found = 0;
 		for (i = 0; instructions[i].opcode != NULL; i++)
 		{

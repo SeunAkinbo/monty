@@ -52,6 +52,7 @@ typedef struct file_handler
 {
 	FILE *file;
 	char *line;
+	char *arg;
 	int num_tokens;
 	stack_t *stack;
 } file_handler;
@@ -70,6 +71,10 @@ void pop(stack_t **stack, unsigned int line_number);
 int main(int argc, char *argv[]);
 void closefile();
 void freeline();
+void execute_ops(char *opcode, stack_t *stack);
+void get_file(char *arg);
+size_t read_line(FILE *f);
+char *ops(char *line);
 
 
 #endif /*MAIN_H*/
