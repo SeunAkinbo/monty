@@ -26,3 +26,22 @@ void freeline(void)
 {
 	free(file_items->line);
 }
+
+
+/**
+ * free_stack - Frees the memory allocated to the stack
+ * @stack: A doubly linked list
+ * Return: void
+ **/
+
+void free_stack(stack_t *stack)
+{
+        stack_t *temp;
+
+        while (stack)
+        {
+                temp = stack;
+                free(stack);
+                stack = temp->next;
+        }
+}
