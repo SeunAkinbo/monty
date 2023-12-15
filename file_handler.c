@@ -10,7 +10,7 @@ FILE *get_file(char *arg)
 {
 	FILE *file = fopen(arg, "r");
 
-	if (file == NULL)
+	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", arg);
 		exit(EXIT_FAILURE);
