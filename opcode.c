@@ -7,7 +7,7 @@
  * Return: void
  **/
 
-void push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode = NULL;
 	int value;
