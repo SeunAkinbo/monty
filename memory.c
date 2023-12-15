@@ -36,12 +36,12 @@ void freeline(void)
 
 void free_stack(stack_t *stack)
 {
-        stack_t *temp;
+	stack_t *temp;
 
-        while (stack)
-        {
-                temp = stack;
-                free(stack);
-                stack = temp->next;
-        }
+	while (stack)
+	{
+		temp = stack;
+		free(stack);
+		stack = temp->next;
+	}
 }

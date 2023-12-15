@@ -26,7 +26,7 @@ void execute(FILE *file)
 		opcode = strtok(line, " \n\t\r");
 		if (opcode == NULL)
 			continue;
-		file_items->arg = opcode;
+		file_items->arg = strtok(NULL, " \n\t\r");
 		found = 0;
 		for (i = 0; instructions[i].opcode != NULL; i++)
 		{

@@ -10,10 +10,8 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newnode = NULL;
-	char *args;
 	int value;
 
-	args = strtok(NULL, " \n\t\r");
 	if (file_items->num_tokens < 2)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -22,7 +20,8 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	if ((args == NULL || !isdigit(*args)) && *args != '-')
+	if ((file_items->arg == NULL || !isdigit(*file_items->arg))
+		&& *file_items->arg != '-')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		closefile();
@@ -30,7 +29,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	value = atoi(args);
+	value = atoi(file_items->arg);
 	newnode = malloc(sizeof(stack_t));
 	if (!newnode)
 	{
