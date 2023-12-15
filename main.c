@@ -1,5 +1,5 @@
 #include "monty.h"
-file_handler *file_items = NULL;
+file_handler *file_items;
 /**
  * main - The main function
  * @argc: Argument counter
@@ -27,6 +27,9 @@ int main(int argc, char *argv[])
 
 	file_items->file = file;
 	file_items->num_tokens = argc;
+	file_items->line = NULL;
+	file_items->arg = NULL;
+	file_items->stack = NULL;
 
 	execute(file_items->file);
 
