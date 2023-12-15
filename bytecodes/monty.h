@@ -68,13 +68,15 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void addnode(stack_t *head, int n);
+void addnode_queue(stack_t *head, stack_t *bot, int n);
 int main(int argc, char *argv[]);
 void closefile();
 void freeline();
-void execute(FILE *file);
+void free_stack(stack_t *stack);
 FILE *get_file(char *arg);
 size_t read_line(FILE *f);
 char *ops(char *line);
-
+int execute_ops(char *line, stack_t *stack);
 
 #endif /*MAIN_H*/

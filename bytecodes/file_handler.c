@@ -6,17 +6,17 @@
  * Return: void
  **/
 
-void get_file(char *arg)
+FILE *get_file(char *arg)
 {
-	file = fopen(arg, "r");
+	FILE *file = fopen(arg, "r");
 
 	if (file == NULL)
 	{
-		fprint(stderr, "Error: Can't open file %s\n", arg);
+		fprintf(stderr, "Error: Can't open file %s\n", arg);
 		exit(EXIT_FAILURE);
 	}
 
-	file_items->file = file;
+	return (file);
 }
 
 /**
@@ -30,9 +30,10 @@ size_t read_line(FILE *f)
 	char *line = NULL;
 	size_t len = 0;
 	size_t readline;
+	size_t getline(char **buffer, size_t *size, FILE *f);
 
 	readline = getline(&line, &len, f);
-	if (readline != -1)
+	if (readline > 0)
 		file_items->line = line;
 	free(line);
 	return (readline);
