@@ -18,6 +18,10 @@ void pall(stack_t **stack, unsigned int line_number)
 		exit(EXIT_SUCCESS);
 
 	temp = *stack;
+
+	if (!temp)
+		return;
+
 	while (temp)
 	{
 		printf("%d\n", temp->n);
