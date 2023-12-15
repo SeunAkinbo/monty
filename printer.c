@@ -11,7 +11,7 @@
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = NULL;
+	stack_t *temp;
 	(void)line_number;
 
 	if (!*stack)
@@ -27,7 +27,6 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-	free(temp);
 }
 
 
