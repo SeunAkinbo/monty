@@ -10,7 +10,7 @@ void execute(FILE *file)
 	size_t i, len = 0;
 	unsigned int line_number = 0, found;
 
-	int getline(char **line, size_t *len, FILE *file);
+	ssize_t getline(char **line, size_t *len, FILE *file);
 	instruction_t instructions[] = {
 					{"push", &push},
 					{"pall", &pall},
