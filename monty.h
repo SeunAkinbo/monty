@@ -76,6 +76,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 
 int main(int argc, char *argv[]);
+void addnode(stack_t **top, int n);
 
 /*MEMORY MANAGEMENT PROTOTYPES*/
 void closefile();

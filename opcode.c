@@ -1,54 +1,6 @@
 #include "monty.h"
 
 /**
- * push - push item to a stack
- * @stack: A doubly linked list
- * @line_number: The item to be pushed
- * Return: void
- **/
-
-void _push(stack_t **stack, unsigned int line_number)
-{
-	stack_t *newnode = NULL;
-	int value;
-
-	if (file_items->num_tokens < 2)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		closefile();
-		freeline();
-		exit(EXIT_FAILURE);
-	}
-
-	if ((file_items->arg == NULL || !isdigit(*file_items->arg))
-		&& *file_items->arg != '-')
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		closefile();
-		freeline();
-		exit(EXIT_FAILURE);
-	}
-
-	value = atoi(file_items->arg);
-	newnode = malloc(sizeof(stack_t));
-	if (!newnode)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		free(newnode);
-		closefile();
-		freeline();
-		exit(EXIT_FAILURE);
-	}
-	newnode->next = *stack;
-	newnode->prev = NULL;
-	newnode->n = value;
-
-	if (*stack)
-		(*stack)->prev = newnode;
-	*stack = newnode;
-}
-
-/**
  * pop - Pops item at the top of the stack
  * @stack: Doubly linked list
  * @line_number: The file line number
@@ -68,4 +20,44 @@ void pop(stack_t **stack, unsigned int line_number)
 		*stack = NULL;
 	else
 		*stack = (*stack)->next;
+}
+
+/**
+ * push - push item to a stack
+ * @stack: A doubly linked list
+ * @line_number: The item to be pushed
+ * Return: void
+ **/
+
+void push(stack_t **stack, unsigned int line_number)
+{
+	int value, i = 0, ar_flag = 0;
+
+	if (file_items->arg)
+	{
+		if (file_items->arg[0] == '-')
+			i++;
+		for (; file_items->arg[i] != '\0'; i++)
+		{
+			if (file_items->arg[i] > 57 || file_items->arg[i] < 48)
+				ar_flag = 1;
+		}
+		if (ar_flag == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			closefile();
+			freeline();
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		closefile();
+		freeline();
+		exit(EXIT_FAILURE);
+	}
+
+	value = atoi(file_items->arg);
+	addnode(stack, value);
 }
