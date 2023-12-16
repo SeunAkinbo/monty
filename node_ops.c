@@ -29,3 +29,25 @@ void addnode(stack_t **top, int n)
 		(*top)->prev = newnode;
 	*top = newnode;
 }
+
+/**
+ * node_count - counts the number of nodes in a stack
+ * @stack: The stack doubly linked list
+ * Return: The node count
+ **/
+
+unsigned int node_count(stack_t **stack)
+{
+	unsigned int count = 0;
+	stack_t *curr;
+
+	curr = *stack;
+
+	while (curr)
+	{
+		count++;
+		curr = curr->next;
+	}
+	free(curr);
+	return (count);
+}

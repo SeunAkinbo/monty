@@ -11,7 +11,7 @@
  **/
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = NULL;
+	stack_t *temp = 0;
 
 	if (!*stack)
 	{
@@ -23,8 +23,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 
 	temp = *stack;
-	*stack = (*stack)->next;
-	free(temp);
+	*stack = temp->next;
 }
 
 /**
@@ -65,4 +64,29 @@ void push(stack_t **stack, unsigned int line_number)
 
 	value = atoi(file_items->arg);
 	addnode(stack, value);
+}
+
+/**
+ * swap - swaps the top two elements of the stack
+ * @stack: The doubly linked list of the stack
+ * @line_number: The line number of the file
+ * Return: void
+ **/
+
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if (!*stack || (*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		closefile();
+		freeline();
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }

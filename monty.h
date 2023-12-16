@@ -73,10 +73,12 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
-void _push(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+
 
 int main(int argc, char *argv[]);
 void addnode(stack_t **top, int n);
+unsigned int node_count(stack_t **stack);
 
 /*MEMORY MANAGEMENT PROTOTYPES*/
 void closefile();

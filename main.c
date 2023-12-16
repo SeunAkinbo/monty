@@ -18,13 +18,13 @@ int main(int argc, char *argv[])
 	}
 
 	file = get_file(argv[1]);
+
 	file_items = malloc(sizeof(file_handler));
 	if (!file_items)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
 	file_items->file = file;
 	file_items->num_tokens = argc;
 	file_items->line = NULL;
