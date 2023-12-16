@@ -12,12 +12,9 @@ void execute(FILE *file)
 
 	ssize_t getline(char **line, size_t *len, FILE *file);
 	instruction_t instructions[] = {
-					{"push", &push},
-					{"pall", &pall},
-					{"pint", &pint},
-					{"pop", &pop},
-					{"swap", &swap},
-					{NULL, NULL}
+					{"push", &push}, {"pall", &pall},
+					{"pint", &pint}, {"pop", &pop},
+					{"swap", &swap}, {NULL, NULL}
 	};
 
 	while (getline(&line, &len, file) != -1)
