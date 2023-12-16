@@ -105,3 +105,34 @@ void _div(stack_t **stack, unsigned int line_number)
 		free(temp);
 }
 
+/**
+ * _mul - multiplies the second top element of the stac
+ *	 with the top element of the stack.
+ * @stack: The stack doubly linked list
+ * @line_number: The line number of the file command
+ * Return: void
+ **/
+
+void _mul(stack_t **stack, unsigned int line_number)
+{
+	int result;
+	stack_t *temp;
+
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n",
+				line_number);
+		closefile();
+		freeline();
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *stack;
+	result = (*stack)->next->n * (*stack)->n;
+	(*stack)->next->n = result;
+	*stack = (*stack)->next;
+
+	if (temp)
+		free(temp);
+}
