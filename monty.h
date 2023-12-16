@@ -82,7 +82,7 @@ unsigned int node_count(stack_t **stack);
 
 /*MATH OPERATION PROTOTYPES*/
 void add(stack_t **stack, unsigned int line_number);
-
+void sub(stack_t **stack, unsigned int line_number);
 
 /*MEMORY MANAGEMENT PROTOTYPES*/
 void closefile();
