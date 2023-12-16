@@ -16,7 +16,7 @@ void execute(FILE *file)
 					{"pint", &pint}, {"pop", &pop},
 					{"swap", &swap}, {"add", &add},
 					{"nop", &nop}, {"sub", &sub},
-					{NULL, NULL}
+					{"div", &_div}, {NULL, NULL}
 	};
 
 	while (getline(&line, &len, file) != -1)
