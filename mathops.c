@@ -54,9 +54,8 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 
 	temp = *stack;
-
-	diff = (*stack)->n - (*stack)->next->n;
-	(*stack)->next->n = abs(diff);
+	diff = (*stack)->next->n - (*stack)->n;
+	(*stack)->next->n = diff;
 	*stack = (*stack)->next;
 
 	if (temp)
