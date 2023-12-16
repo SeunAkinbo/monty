@@ -30,13 +30,13 @@ void pop(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * push - push item to a stack
+ * _push - push item to a stack
  * @stack: A doubly linked list
  * @line_number: The item to be pushed
  * Return: void
  **/
 
-void push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	int value, i = 0, ar_flag = 0;
 
