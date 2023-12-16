@@ -11,7 +11,7 @@
  **/
 void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = 0;
+	stack_t *temp = NULL;
 
 	if (!*stack)
 	{
@@ -23,7 +23,10 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 
 	temp = *stack;
-	*stack = temp->next;
+	*stack = (*stack)->next;
+
+	if (temp)
+		free(temp);
 }
 
 /**
