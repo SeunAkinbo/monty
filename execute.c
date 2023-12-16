@@ -25,7 +25,7 @@ void execute(FILE *file)
 		line_number++;
 		file_items->line = line;
 		opcode = strtok(line, " \n\t\r");
-		if (opcode == NULL)
+		if (opcode == NULL || opcode[0] == '#')
 			continue;
 		file_items->arg = strtok(NULL, " \n\t\r");
 		found = 0;
