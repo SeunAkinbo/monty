@@ -64,7 +64,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - Divides the second top element of the stack
+ * _div - Divides the second top element of the stack
  *	by the top element of the stack.
  * @stack: The stack doubly linked list
  * @line_number: The line number of the file command
@@ -74,7 +74,7 @@ void sub(stack_t **stack, unsigned int line_number)
 void _div(stack_t **stack, unsigned int line_number)
 {
 	int result;
-	/*stack_t *temp;*/
+	stack_t *temp;
 
 	if (!*stack || !(*stack)->next)
 	{
@@ -96,13 +96,12 @@ void _div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	/*temp = *stack;*/
+	temp = *stack;
 	result = (*stack)->next->n / (*stack)->n;
 	(*stack)->next->n = result;
 	*stack = (*stack)->next;
 
-	/*if (temp)
-		free(temp);*/
-	/*return (EXIT_SUCCESS);*/
+	if (temp)
+		free(temp);
 }
 
