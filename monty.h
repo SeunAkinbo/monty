@@ -58,6 +58,7 @@ typedef struct file_handler
 	char *line;
 	char *arg;
 	int num_tokens;
+	int order;
 	stack_t *stack;
 } file_handler;
 
@@ -79,8 +80,11 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
+void _queue(stack_t **stack, unsigned int line_number);
 int main(int argc, char *argv[]);
 void addnode(stack_t **top, int n);
+void addqueue(stack_t **top, int n);
 unsigned int node_count(stack_t **stack);
 
 /*MATH OPERATION PROTOTYPES*/

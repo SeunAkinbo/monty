@@ -66,7 +66,11 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	value = atoi(file_items->arg);
-	addnode(stack, value);
+
+	if (file_items->order == 0)
+		addnode(stack, value);
+	else
+		addqueue(stack, value);
 }
 
 /**

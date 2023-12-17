@@ -26,3 +26,33 @@ void rotr(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = bottom;
 	*stack = bottom;
 }
+
+/**
+ * _stack - Node arrangement order
+ * @stack: The doubly linked list
+ * @line_number: The command line number in file
+ * Return: void
+ **/
+
+void _stack(stack_t **stack, unsigned int line_number)
+{
+	(void)(*stack);
+	(void)line_number;
+	file_items->order = 0;
+}
+
+
+/** 
+ * _queue - Node arrangement order
+ * @stack: The doubly linked list
+ * @line_number: The command line number in file
+ * Return: void
+ **/
+
+
+void _queue(stack_t **stack, unsigned int line_number)
+{
+	(void)(*stack);
+	(void)line_number;
+	file_items->order = 1;
+}
