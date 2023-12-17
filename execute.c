@@ -18,9 +18,7 @@ void execute(FILE *file)
 					{"nop", &nop}, {"sub", &sub},
 					{"div", &_div}, {"mul", &_mul},
 					{"mod", &_mod}, {"pchar", &pchar},
-					{NULL, NULL}
-	};
-
+					{NULL, NULL}};
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
@@ -36,8 +34,7 @@ void execute(FILE *file)
 			{
 				found = 1;
 				instructions[i].f(&file_items->stack, line_number);
-				break;
-			}
+				break; }
 		}
 		if (!found)
 		{
