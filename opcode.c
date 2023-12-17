@@ -118,18 +118,19 @@ void nop(stack_t **stack, unsigned int line_number)
 
 void rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *bottom;
+	stack_t *bottom, *temp;
 	(void)line_number;
 
 	if (!*stack || !(*stack)->next)
 		return;
 
 	bottom = *stack;
-	while (bottom->next)
+	temp = (*stack)->next;
+	while (bottom->next != NULL)
 		bottom = bottom->next;
 
 	bottom->next = *stack;
+	(*stack)->next = NULL;
 	(*stack)->prev = bottom;
-	*stack = (*stack)->next;
-	(*stack)->prev = NULL;
+	*stack = temp;
 }
