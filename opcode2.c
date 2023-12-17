@@ -38,7 +38,7 @@ void _stack(stack_t **stack, unsigned int line_number)
 {
 	(void)(*stack);
 	(void)line_number;
-	file_items->order = 0;
+	file_items->order = STACK;
 }
 
 
@@ -54,5 +54,5 @@ void _queue(stack_t **stack, unsigned int line_number)
 {
 	(void)(*stack);
 	(void)line_number;
-	file_items->order = 1;
+	file_items->order = QUEUE;
 }
