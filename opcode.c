@@ -97,6 +97,7 @@ void swap(stack_t **stack, unsigned int line_number)
 /**
  * nop - The function does nothing
  * @line_number: The file operation command line number
+ * @stack: The doubly linked list of the stack
  * Return: void
  **/
 
@@ -106,4 +107,29 @@ void nop(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	return;
+}
+
+/**
+ * rotl - rotates the stack to the top
+ * @stack: The doubly linked list of the stack
+ * @line_number: The file operation command line number
+ * Return: void
+ **/
+
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *bottom;
+	(void)line_number;
+
+	if (!*stack || !(*stack)->next)
+		return;
+
+	bottom = *stack;
+	while (bottom->next)
+		bottom = bottom->next;
+
+	bottom->next = *stack;
+	(*stack)->prev = bottom;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
 }

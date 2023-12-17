@@ -18,7 +18,8 @@ void execute(FILE *file)
 					{"nop", &nop}, {"sub", &sub},
 					{"div", &_div}, {"mul", &_mul},
 					{"mod", &_mod}, {"pchar", &pchar},
-					{"pstr", &pstr}, {NULL, NULL}};
+					{"pstr", &pstr}, {"rotl", &rotl},
+					{NULL, NULL}};
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
@@ -34,15 +35,12 @@ void execute(FILE *file)
 			{
 				found = 1;
 				instructions[i].f(&file_items->stack, line_number);
-				break; }
-		}
+				break; } }
 		if (!found)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 			free(line);
 			free(file_items);
 			fclose(file);
-			exit(EXIT_FAILURE);
-		}
-	}
+			exit(EXIT_FAILURE); } }
 }
