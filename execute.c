@@ -19,7 +19,7 @@ void execute(FILE *file)
 					{"div", &_div}, {"mul", &_mul},
 					{"mod", &_mod}, {"pchar", &pchar},
 					{"pstr", &pstr}, {"rotl", &rotl},
-					{NULL, NULL}};
+					{"rotr", &rotr}, {NULL, NULL}};
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
