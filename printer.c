@@ -87,15 +87,16 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 void pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *node;
 	(void)line_number;
 
-	if (!*stack || (*stack)->n == 0 || ((*stack)->n > 127
-				|| (*stack)->n < 0))
+	node = *stack;
+	while (node)
 	{
-		closefile();
-		freeline();
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
+		if ((*stack)->n > 127 || (*stack)->n <= 0)
+			break;
+		putchar((char)(*stack)->n);
+		node = node->next;
 	}
-	printf("%d\n", (*stack)->n);
+	putchar('\n');
 }
