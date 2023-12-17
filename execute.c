@@ -18,7 +18,7 @@ void execute(FILE *file)
 					{"nop", &nop}, {"sub", &sub},
 					{"div", &_div}, {"mul", &_mul},
 					{"mod", &_mod}, {"pchar", &pchar},
-					{NULL, NULL}};
+					{"pstr", &pstr}, {NULL, NULL}};
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;

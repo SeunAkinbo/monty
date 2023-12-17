@@ -77,3 +77,25 @@ void pchar(stack_t **stack, unsigned int line_number)
 	putchar((char)(*stack)->n);
 	putchar('\n');
 }
+
+/**
+ * pstr - Prints the string at the top of the stack, followed by a new line
+ * @stack: A doubly linked list representing the stack
+ * @line_number: The line number in the Monty file
+ * Return: void
+ **/
+
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	(void)line_number;
+
+	if (!*stack || (*stack)->n == 0 || ((*stack)->n > 127
+				|| (*stack)->n < 0))
+	{
+		closefile();
+		freeline();
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
+}
