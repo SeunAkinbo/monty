@@ -74,5 +74,6 @@ void pchar(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", file_items->stack->n);
+	putchar((*stack)->n);
+	putchar('\n');
 }
