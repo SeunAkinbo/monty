@@ -93,10 +93,10 @@ void pstr(stack_t **stack, unsigned int line_number)
 	node = *stack;
 	while (node)
 	{
-		if ((*stack)->n > 127 || (*stack)->n <= 0)
+		if ((node->n > 127 || node->n <= 0))
 			break;
-		putchar((char)(*stack)->n);
+		printf("%c", node->n);
 		node = node->next;
 	}
-	putchar('\n');
+	printf("\n");
 }
